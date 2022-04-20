@@ -10,4 +10,6 @@ package Business.Enterprise;
  */
 public class CommunityHeathcareEnterprise {
     
+    String test;
+    
 }
