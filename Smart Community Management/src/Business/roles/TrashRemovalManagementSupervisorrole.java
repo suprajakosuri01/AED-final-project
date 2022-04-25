@@ -4,10 +4,19 @@
  */
 package Business.roles;
 
+import Business.Enterprise.Enterprise;
+import Business.Network.Network;
+import Business.Organization.Organization;
+import Business.UserAccount.UserAccount;
+import javax.swing.JPanel;
+
 /**
  *
  * @author vivek
  */
 public class TrashRemovalManagementSupervisorrole {
-    
+    @Override
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business,Network network) {
+        return new TrashRemovalManagementSupervisorJpanel(userProcessContainer, account, organization);
+    }
 }
