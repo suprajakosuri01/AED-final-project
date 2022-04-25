@@ -14,11 +14,11 @@ import javax.swing.JPanel;
  *
  * @author vivek
  */
-public class TrashRemovalManagementWorkerRole extends Role {
+public class ElectricityManagementSupervisorRole extends role {
+    
+    
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business,Network network) {
-        return new utilityComplaintWorkerjpanel(userProcessContainer, account, organization);
-    }
-    
-    
+        return new utilitycomplaintsupervisorjpanel(userProcessContainer, account, organization);
+}
 }

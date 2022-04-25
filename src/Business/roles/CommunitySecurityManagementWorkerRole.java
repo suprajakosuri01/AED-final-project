@@ -14,9 +14,11 @@ import javax.swing.JPanel;
  *
  * @author vivek
  */
-public class TrashRemovalManagementSupervisorrole {
-    @Override
+public class CommunitySecurityManagementWorkerRole {
+    
+    
+     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business,Network network) {
-        return new TrashRemovalManagementSupervisorJpanel(userProcessContainer, account, organization);
+        return new securityManagementworkerjpanel(userProcessContainer, account, organization);
     }
 }

@@ -8,6 +8,6 @@ package Business.roles;
  *
  * @author vivek
  */
-public class Electricitymanagementworkerrole {
+public class TrashRemovalManagementWorkerRole {
     
 }
