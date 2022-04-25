@@ -4,11 +4,13 @@
  */
 package Business.Enterprise;
 
+import Business.Organization.Organization;
+import Business.Organization.OrganizationDirectory;
+
 /**
  *
  * @author vivek
  */
-public class Enterprise {
     
     public abstract class Enterprise extends Organization {
     
@@ -18,13 +20,12 @@ public class Enterprise {
     public OrganizationDirectory getOrganizationDirectory() {
         return organizationDirectory;
     }
-    
     public enum EnterpriseType{
         
         Resident("Resident"),
-        CommunityComplaintManagemen("CommunityComplaintManagemen"),
+        CommunityComplaintManagement("CommunityComplaintManagement"),
         CommunitySafety("CommunitySafety"),
-        CommunityHeathcare("CommunityHeathcare");
+       CommunityHealthcare("CommunityHealthcare");
         
         private String value;
         
@@ -60,6 +61,6 @@ public class Enterprise {
     }
     
     
-}
-    
+
+   
 }

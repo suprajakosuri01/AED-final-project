@@ -4,10 +4,20 @@
  */
 package Business.Enterprise;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author vivek
  */
-public class CommunitySafetyEnterprise {
-    
+public class CommunitySafetyEnterprise extends Enterprise {
+    public CommunitySafetyEnterprise(String name){
+        
+        super(name,Enterprise.EnterpriseType.CommunitySafety);
+    }
+    @Override
+    public ArrayList<Role> getSupportedRole() {
+        
+        return null;
+    }
 }

@@ -4,10 +4,24 @@
  */
 package Business.Enterprise;
 
+import Business.Enterprise.Enterprise.Enterprise.EnterpriseType;
+import Business.Enterprise.Enterprise.EnterpriseType;
+import java.util.ArrayList;
+
 /**
  *
  * @author vivek
  */
-public class CommunityComplaintManagementEnterprise {
+public class CommunityComplaintManagementEnterprise extends Enterprise {
     
+    public CommunityComplaintManagementEnterprise(String name){
+        
+        super(name,EnterpriseType.CommunityComplaintManagement);
+    @Override
+    public ArrayList<Role> getSupportedRole() {
+        
+        return null;
+    }
+    
+}
 }
