@@ -7,10 +7,13 @@ package Business.Role;
 
 //import Business.role.Role;
 
+import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
+import UI.CommunityResident.CommunityResidentJPanel;
+import javax.swing.JPanel;
 
 //import Business.role.Role;
 //import Business.role.Role;
@@ -23,6 +26,6 @@ public class ResidentRole extends Role{
     
       @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business,Network network) {
-        return new CommunityResidentJPanel(userProcessContainer, account, organization);
+        return new CommunityResidentJPanel(userProcessContainer, account, network);
     }
 }

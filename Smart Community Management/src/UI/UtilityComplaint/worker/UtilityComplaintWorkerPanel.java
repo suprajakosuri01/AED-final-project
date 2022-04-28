@@ -4,6 +4,16 @@
  * and open the template in the editor.
  */
 package UI.UtilityComplaint.worker;
+import Business.Organization.Organization;
+import Business.UserAccount.UserAccount;
+import Business.WorkQueue.Complaint;
+import Business.WorkQueue.WorkQueue;
+import Business.WorkQueue.WorkAppeal;
+import java.awt.CardLayout;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -14,8 +24,21 @@ public class UtilityComplaintWorkerPanel extends javax.swing.JPanel {
     /**
      * Creates new form UtilityComplaintWorkerPanel
      */
-    public UtilityComplaintWorkerPanel() {
+    private JPanel userProcessContainer;
+    private UserAccount userAccount;
+    private Organization organization;
+     DefaultTableModel dtm;
+    int row,col;
+    
+    public UtilityComplaintWorkerPanel(JPanel userProcessContainer, UserAccount userAccount, Organization organization) {
         initComponents();
+        
+        this.userProcessContainer = userProcessContainer;
+        this.userAccount = userAccount;
+        this.organization = organization;
+        lblgrievEmployee.setText("Welcome employee " + userAccount.getEmployee().getName() + ", please process the request in " + userAccount.getEmployee().getOrg() + " org");
+        dtm = (DefaultTableModel) tblGrievanceEmployee.getModel();
+        populateTable();
     }
 
     /**
@@ -27,19 +50,179 @@ public class UtilityComplaintWorkerPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblgrievEmployee = new javax.swing.JLabel();
+        btnBack = new javax.swing.JButton();
+        btnProcess = new javax.swing.JButton();
+        btnAccept = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblGrievanceEmployee = new javax.swing.JTable();
+
+        lblgrievEmployee.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblgrievEmployee.setForeground(new java.awt.Color(255, 51, 102));
+        lblgrievEmployee.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+
+        btnProcess.setText("Processs");
+        btnProcess.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProcessActionPerformed(evt);
+            }
+        });
+
+        btnAccept.setText("  Accept ");
+        btnAccept.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAcceptActionPerformed(evt);
+            }
+        });
+
+        tblGrievanceEmployee.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Resident Name", "Priority", "Message", "Status", "Request Date", "Resolve Date"
+            }
+        ));
+        jScrollPane1.setViewportView(tblGrievanceEmployee);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(lblgrievEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 851, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnBack)
+                .addGap(33, 33, 33))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(271, 271, 271)
+                        .addComponent(btnAccept, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(76, 76, 76)
+                        .addComponent(btnProcess, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 843, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(lblgrievEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(btnBack)))
+                .addGap(44, 44, 44)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnProcess)
+                    .addComponent(btnAccept))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
+        // TODO add your handling code here:
+
+        row = tblGrievanceEmployee.getSelectedRow();
+
+        if (dtm.getValueAt(row, 3).toString().equalsIgnoreCase("Assigned Employee"))
+        {
+            JOptionPane.showMessageDialog(this,"Please accept the complaint before processing", "Complaint not accepted", 2);
+        }
+
+        else if(dtm.getValueAt(row, 3).toString().equalsIgnoreCase("Employee On the way"))
+        {
+            int dialogButton = JOptionPane.YES_NO_OPTION;
+            int dialogResult = JOptionPane.showConfirmDialog(this, "Complaint Resolved ? ", "Complaint resolved", dialogButton);
+            if (dialogResult == 0)
+            {
+
+                WorkQueue workQueue = userAccount.getWorkQueue();
+                Complaint complaint = (Complaint)workQueue.getWorkAppeals().get(row);
+                complaint.setStatus("Complaint Resolved");
+
+                complaint.setResolveDate(new Date());
+                populateTable();
+                JOptionPane.showMessageDialog(this, "Complaint resolved sucessfuly","Complaint resolved",1);
+            }
+
+        }
+
+        else if (dtm.getValueAt(row, 3).toString().equalsIgnoreCase("Complaint Resolved"))
+        {
+            JOptionPane.showMessageDialog(this,"Complaint is already resolved", "Complaint resolved", 2);
+        }
+    }//GEN-LAST:event_btnProcessActionPerformed
+
+    private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptActionPerformed
+        // TODO add your handling code here:
+
+        row = tblGrievanceEmployee.getSelectedRow();
+        if (row < 0){
+            return;
+        }
+
+        Complaint complaint = (Complaint) userAccount.getWorkQueue().getWorkAppeals().get(row);
+        if (dtm.getValueAt(row, 3).toString().equalsIgnoreCase("Employee On the way"))
+        {
+            JOptionPane.showMessageDialog(this,"Complaint already accepted by the employee", "Complaint already accepted", 2);
+        }
+
+        else complaint.setStatus("Employee On the way");
+        populateTable();
+    }//GEN-LAST:event_btnAcceptActionPerformed
+private void populateTable() {
+      dtm.setRowCount(0);
+  
+        WorkQueue workQueue = userAccount.getWorkQueue();
+        
+        for(WorkAppeal workRequest  : workQueue.getWorkAppeals()){
+            Complaint complaint = (Complaint) workRequest;
+            
+            String receiver = "Not yet Assigned"; 
+            if( complaint.getReceiver() != null)
+                receiver = complaint.getReceiver().getEmployee().getName();
+            
+            Date date = null;
+       
+            if(complaint.getStatus().equalsIgnoreCase("Complaint Resolved")) {
+                  date = complaint.getResolveDate();
+            }
+            
+            Object[] objs = {complaint.getRequestor().getResident().getName(),complaint.getPriority(), complaint.getRemarks(), complaint.getStatus(),complaint.getRequestDate(),date};
+            dtm.addRow(objs);
+            
+        }
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAccept;
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnProcess;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblgrievEmployee;
+    private javax.swing.JTable tblGrievanceEmployee;
     // End of variables declaration//GEN-END:variables
 }

@@ -20,9 +20,8 @@ public class SystemAdminRole extends Role {
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, Network network) {
-       return new SystemAdminWorkAreaJPanel(userProcessContainer, enterprise);
+       return new SystemAdminWorkAreaJPanel(userProcessContainer,business,account);
        
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

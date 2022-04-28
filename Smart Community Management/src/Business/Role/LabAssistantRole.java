@@ -6,10 +6,13 @@ package Business.Role;
 
 //import Business.role.Role;
 
+import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
+import UI.labOrganization.LabAssistantWorkAreaJPanel;
+import javax.swing.JPanel;
 
 
 /**

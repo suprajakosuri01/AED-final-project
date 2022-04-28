@@ -1,8 +1,10 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package UI.EnterpriseAdmin;
+
 import Business.Enterprise.Enterprise;
 import Business.Organization.OrganizationDirectory;
 import javax.swing.JPanel;
@@ -41,19 +43,23 @@ import java.util.regex.Pattern;
 import javax.lang.model.SourceVersion;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+
+
 /**
  *
- * @author adepu
+ * @author suprajakosuri
  */
 public class ManageEmployeeJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form ManageEmployee
+     * Creates new form ManageEmployeeJPanel
      */
+    
     private Enterprise enterprise;
     private JPanel userProcessContainer;
     private OrganizationDirectory organizationDirectory;
     DefaultTableModel model;
+    
     public ManageEmployeeJPanel(JPanel userProcessContainer, Enterprise enterprise) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
@@ -74,73 +80,31 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnAddEmployee = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        btnBack = new javax.swing.JButton();
         orgEmpRoleComboBox = new javax.swing.JComboBox();
         jLabel5 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        txtEmpName = new javax.swing.JTextField();
-        orgTypeComboBox = new javax.swing.JComboBox();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        lblValidUser = new javax.swing.JLabel();
-        txtUser = new javax.swing.JTextField();
-        lblValidPassword = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        txtPassword = new javax.swing.JPasswordField();
+        btnBack = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableEmployee = new javax.swing.JTable();
-
-        btnAddEmployee.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-        btnAddEmployee.setText("Save");
-        btnAddEmployee.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnAddEmployee.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddEmployeeActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jLabel1.setText("Employee Type");
-
-        btnBack.setText("back");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
+        txtPassword = new javax.swing.JPasswordField();
+        jLabel4 = new javax.swing.JLabel();
+        txtUser = new javax.swing.JTextField();
+        lblValidPassword = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        lblValidUser = new javax.swing.JLabel();
+        orgTypeComboBox = new javax.swing.JComboBox();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txtEmpName = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        btnAddEmployee = new javax.swing.JButton();
 
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel5.setText("Employee Name");
 
-        jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jLabel2.setText("Organization");
-
-        jLabel6.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 51, 102));
-        jLabel6.setText("Manage Employee");
-
-        jLabel3.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jLabel3.setText("Username");
-
-        txtUser.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtUserKeyPressed(evt);
-            }
-        });
-
-        jLabel4.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jLabel4.setText("Password");
-
-        txtPassword.addActionListener(new java.awt.event.ActionListener() {
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPasswordActionPerformed(evt);
-            }
-        });
-        txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtPasswordKeyPressed(evt);
+                btnBackActionPerformed(evt);
             }
         });
 
@@ -153,6 +117,43 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
             }
         ));
         jScrollPane1.setViewportView(tableEmployee);
+
+        txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPasswordKeyPressed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        jLabel4.setText("Password");
+
+        txtUser.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtUserKeyPressed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        jLabel3.setText("Username");
+
+        jLabel6.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 51, 102));
+        jLabel6.setText("Manage Employee");
+
+        jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        jLabel2.setText("Organization");
+
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        jLabel1.setText("Employee Type");
+
+        btnAddEmployee.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
+        btnAddEmployee.setText("Save");
+        btnAddEmployee.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnAddEmployee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddEmployeeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -225,9 +226,16 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
                 .addComponent(btnAddEmployee)
                 .addGap(40, 40, 40)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnAddEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddEmployeeActionPerformed
 
@@ -373,17 +381,29 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnAddEmployeeActionPerformed
 
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-
-        userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-    }//GEN-LAST:event_btnBackActionPerformed
-
-    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
+    private void txtUserKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserKeyPressed
         // TODO add your handling code here:
+         if (!validUsername(txtUser.getText())) {
+            txtUser.setBorder(BorderFactory.createLineBorder(Color.RED));
+            txtUser.setForeground(Color.RED);
+            lblValidUser.setText("Invalid UserName..Only letters allowed");
+        } else {
+            txtUser.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txtUser.setForeground(Color.BLACK);
+            lblValidUser.setText("Valid UserName");
+            int delay = 3000; //milliseconds
+            ActionListener taskPerformer = new ActionListener() {
+                public void actionPerformed(ActionEvent evt) {
+                    lblValidUser.setVisible(false);
+                }  
+            };
+            javax.swing.Timer tick = new javax.swing.Timer(delay, taskPerformer);
+            tick.setRepeats(false);
+            tick.start();
+        }
         
-    }//GEN-LAST:event_txtPasswordActionPerformed
+        
+    }//GEN-LAST:event_txtUserKeyPressed
 
     private void txtPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyPressed
         // TODO add your handling code here:
@@ -407,30 +427,8 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
             tick.setRepeats(false);
             tick.start();
         }
-    }//GEN-LAST:event_txtPasswordKeyPressed
-
-    private void txtUserKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserKeyPressed
-        // TODO add your handling code here:
-        if (!validUsername(txtUser.getText())) {
-            txtUser.setBorder(BorderFactory.createLineBorder(Color.RED));
-            txtUser.setForeground(Color.RED);
-            lblValidUser.setText("Invalid UserName..Only letters allowed");
-        } else {
-            txtUser.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-            txtUser.setForeground(Color.BLACK);
-            lblValidUser.setText("Valid UserName");
-            int delay = 3000; //milliseconds
-            ActionListener taskPerformer = new ActionListener() {
-                public void actionPerformed(ActionEvent evt) {
-                    lblValidUser.setVisible(false);
-                }  
-            };
-            javax.swing.Timer tick = new javax.swing.Timer(delay, taskPerformer);
-            tick.setRepeats(false);
-            tick.start();
-        }
         
-    }//GEN-LAST:event_txtUserKeyPressed
+    }//GEN-LAST:event_txtPasswordKeyPressed
 public void populateEmployeeRoleComboBox() {
         
         orgEmpRoleComboBox.removeAllItems();
@@ -506,7 +504,7 @@ public void populateEmployeeRoleComboBox() {
         Pattern pattern;
         Matcher matcher;
         String PASSWORD_PATTERN
-                = "^(?=.[0-9])(?=.[a-z])(?=.[A-Z])(?=.[!@#$%^&+=~|?])(?=\\S+$).{8,}$";
+                = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=~|?])(?=\\S+$).{8,}$";
         pattern = Pattern.compile(PASSWORD_PATTERN);
         matcher = pattern.matcher(passwordValue);
         return matcher.matches();
@@ -531,4 +529,5 @@ public void populateEmployeeRoleComboBox() {
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
+
 }

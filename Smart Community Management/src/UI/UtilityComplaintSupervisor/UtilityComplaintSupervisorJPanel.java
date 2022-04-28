@@ -3,6 +3,29 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package UI.UtilityComplaintSupervisor;
+import Business.Employee.Employee;
+import Business.Organization.Organization;
+import Business.Role.DrinkingWaterManagementAgentRole;
+import Business.Role.ElectricityManagementSupervisorRole;
+import Business.Role.Electricitymanagementworkerrole;
+import Business.Role.GasManagementSupervisoreRole;
+import Business.Role.GasManagementWorkerRole;
+import Business.Role.LandScapeManagementAgentRole;
+import Business.Role.TrashRemovalManagementSupervisorrole;
+import Business.Role.TrashRemovalManagementWorkerRole;
+import Business.Role.ResidentRole;
+import Business.UserAccount.UserAccount;
+import Business.WorkQueue.Complaint;
+import Business.WorkQueue.WorkQueue;
+import Business.WorkQueue.Complaint;
+import Business.WorkQueue.WorkAppeal;
+import java.awt.CardLayout;
+import java.util.Date;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
@@ -13,8 +36,23 @@ public class UtilityComplaintSupervisorJPanel extends javax.swing.JPanel {
     /**
      * Creates new form UtilityComplaintSuperviso
      */
-    public UtilityComplaintSupervisorJPanel() {
+    
+    private JPanel userProcessContainer;
+    private UserAccount userAccount;
+    private Organization organization;
+    DefaultTableModel dtm;
+    int row,col;
+    
+    public UtilityComplaintSupervisorJPanel(JPanel userProcessContainer, UserAccount userAccount, Organization organization) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.userAccount = userAccount;
+        this.organization = organization;
+        lblGrievenceManager.setText(userAccount.getEmployee().getOrg());
+        lblManager.setText("Welcome Manager " + userAccount.getEmployee().getName() + ", please manage resident requests !!");
+        dtm = (DefaultTableModel) tblOrganizationManager.getModel();
+        displayEmployes();
+        populateTable();
     }
 
     /**
@@ -26,47 +64,82 @@ public class UtilityComplaintSupervisorJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        btnAssign = new javax.swing.JButton();
+        btnDeclineRequest = new javax.swing.JButton();
+        btnAcceptRequest = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        btnaccept = new javax.swing.JLabel();
-        btndecline = new javax.swing.JLabel();
-        btnassign = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
-        btnback = new javax.swing.JLabel();
+        tblOrganizationManager = new javax.swing.JTable();
+        comboGrievanceEmploye = new javax.swing.JComboBox();
+        jLabel3 = new javax.swing.JLabel();
+        btnBack = new javax.swing.JButton();
+        lblGrievenceManager = new javax.swing.JLabel();
+        lblManager = new javax.swing.JLabel();
 
-        jLabel1.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        jLabel1.setText("UTILITY COMPLAINT SUPERVISOR");
+        btnAssign.setBackground(new java.awt.Color(204, 255, 255));
+        btnAssign.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
+        btnAssign.setText("  Assign");
+        btnAssign.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnAssign.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAssignActionPerformed(evt);
+            }
+        });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        btnDeclineRequest.setBackground(new java.awt.Color(204, 255, 255));
+        btnDeclineRequest.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
+        btnDeclineRequest.setText("  Decline Request");
+        btnDeclineRequest.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnDeclineRequest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeclineRequestActionPerformed(evt);
+            }
+        });
+
+        btnAcceptRequest.setBackground(new java.awt.Color(204, 255, 255));
+        btnAcceptRequest.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
+        btnAcceptRequest.setText("  Accept Request");
+        btnAcceptRequest.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnAcceptRequest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAcceptRequestActionPerformed(evt);
+            }
+        });
+
+        tblOrganizationManager.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
-                "Resident Name", "Priority", "Status"
+                "Resident Name", "Priority", "Message", "Status", "Employee", "Request Date", "Resolve Date"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tblOrganizationManager.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblOrganizationManagerMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblOrganizationManager);
 
-        btnaccept.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnaccept.setText("ACCEPT");
+        jLabel3.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        jLabel3.setText("Assign Employee");
 
-        btndecline.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btndecline.setText("DECLINE");
+        btnBack.setBackground(new java.awt.Color(204, 255, 255));
+        btnBack.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
+        btnBack.setText("Back");
+        btnBack.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
-        btnassign.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnassign.setText("ASSIGN");
+        lblGrievenceManager.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        lblGrievenceManager.setForeground(new java.awt.Color(255, 51, 102));
+        lblGrievenceManager.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblGrievenceManager.setText(" ");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jLabel2.setText("ASSIGN EMPLOYEE");
-
-        btnback.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnback.setText("BACK");
+        lblManager.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        lblManager.setForeground(new java.awt.Color(255, 51, 102));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -75,62 +148,217 @@ public class UtilityComplaintSupervisorJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(98, 98, 98)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(49, 49, 49)
+                        .addComponent(lblManager, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(226, 226, 226)
-                        .addComponent(btnaccept)))
-                .addContainerGap(118, Short.MAX_VALUE))
+                        .addGap(175, 175, 175)
+                        .addComponent(btnAcceptRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnDeclineRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(comboGrievanceEmploye, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAssign, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 845, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(82, 82, 82)
+                        .addComponent(lblGrievenceManager, javax.swing.GroupLayout.PREFERRED_SIZE, 760, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(490, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btndecline)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(38, 38, 38)
-                .addComponent(btnassign)
-                .addGap(152, 152, 152))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(181, 181, 181)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnback)
-                .addGap(52, 52, 52))
+                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(459, 459, 459))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(95, 95, 95)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(btnback))
-                .addGap(44, 44, 44)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btndecline)
-                    .addComponent(btnaccept))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnassign)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(131, 131, 131))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(lblGrievenceManager, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnBack)
+                .addGap(3, 3, 3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 54, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnAcceptRequest)
+                            .addComponent(btnDeclineRequest))
+                        .addGap(32, 32, 32)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(comboGrievanceEmploye, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAssign))
+                        .addGap(159, 159, 159))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblManager, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
+        // TODO add your handling code here:
+
+        UserAccount grievanceEmployeee =  (UserAccount) comboGrievanceEmploye.getSelectedItem();
+
+        if(grievanceEmployeee.isEmployeeBusy())
+        {
+
+            JOptionPane.showMessageDialog(this, "Selected employee is busy please select other employee.", " Complaint not assigned", 1);
+            return;
+        }
+
+        row = tblOrganizationManager.getSelectedRow();
+        String currentStatus = dtm.getValueAt(row, 3).toString();
+
+        Complaint complaint = (Complaint) organization.getWorkQueue().getWorkAppeals().get(row);
+
+        if(!currentStatus.equalsIgnoreCase("Complaint Accepted"))
+        {
+
+            JOptionPane.showMessageDialog(this, "Please accept complaint to assign", " Complaint not accepted", 1);
+            return;
+        }
+        if(currentStatus.equalsIgnoreCase("Complaint Accepted"))
+        {
+
+            organization.getWorkQueue().getWorkAppeals().get(row).setStatus("Assigned Employee");
+
+            JOptionPane.showMessageDialog(this, "Complaint is Accepted and assigned to respective Employee", " Complaint is forwarded to employee", 1);
+
+        }
+
+        else if(currentStatus.equalsIgnoreCase("Complaint Declined")){
+
+            JOptionPane.showMessageDialog(this, "This complaint is Already declined earlier", " Complaint declined", 1);
+
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Complaint is already Assigend to Employee", " Complaint Accepted", 1);
+
+        }
+        complaint.setReceiver(grievanceEmployeee);
+        complaint.setStatus("Assigned to Employee");
+        grievanceEmployeee.getWorkQueue().addWorkRequest(complaint);
+        populateTable();
+    }//GEN-LAST:event_btnAssignActionPerformed
+
+    private void btnDeclineRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeclineRequestActionPerformed
+        // TODO add your handling code here:
+
+        row = tblOrganizationManager.getSelectedRow();
+        String currentStatus = dtm.getValueAt(row, 3).toString();
+        if(currentStatus.equalsIgnoreCase("Complaint raised"))
+        {
+            userAccount.getWorkQueue().getWorkAppeals().get(row).setStatus("Comlplaint Declined");
+
+        }
+        else if(currentStatus.equalsIgnoreCase("Complaint Declined")){
+
+            JOptionPane.showMessageDialog(this, "This complaint is Already declined earlier", " Complaint declined", 1);
+
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Complaint is already accepted", " Complaint Accepted", 1);
+
+        }
+        populateTable();
+    }//GEN-LAST:event_btnDeclineRequestActionPerformed
+
+    private void btnAcceptRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptRequestActionPerformed
+        // TODO add your handling code here:
+
+        String currentStatus = dtm.getValueAt(row, 3).toString();
+
+        if(currentStatus.equalsIgnoreCase("Complaint raised"))
+        {
+            organization.getWorkQueue().getWorkAppeals().get(row).setStatus("Complaint Accepted");
+            JOptionPane.showMessageDialog(this, "Complaint is Accepted", " Complaint Accepted", 1);
+
+        }
+
+        else if(currentStatus.equalsIgnoreCase("Complaint Declined")){
+
+            JOptionPane.showMessageDialog(this, "This complaint is Already declined earlier", " Complaint declined", 1);
+
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Complaint is already accepted", " Complaint Accepted", 1);
+
+        }
+
+        populateTable();
+
+    }//GEN-LAST:event_btnAcceptRequestActionPerformed
+
+    private void tblOrganizationManagerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblOrganizationManagerMouseClicked
+        // TODO add your handling code here:
+
+        row = tblOrganizationManager.getSelectedRow();
+        col = tblOrganizationManager.getSelectedColumn();
+
+    }//GEN-LAST:event_tblOrganizationManagerMouseClicked
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBackActionPerformed
+private void populateTable() {
+      dtm.setRowCount(0);
+  
+        WorkQueue workQueue = organization.getWorkQueue();
+        
+        for(WorkAppeal workRequest  : workQueue.getWorkAppeals()){
+            Complaint complaint = (Complaint) workRequest;
+            
+            String receiver = "Not yet Assigned"; 
+            if( complaint.getReceiver() != null)
+                receiver = complaint.getReceiver().getEmployee().getName();
+            
+            Date date = null;
+       
+            if(complaint.getStatus().equalsIgnoreCase("Complaint Resolved")) {
+                  date = complaint.getResolveDate();
+            }
+
+            Object[] objs = {complaint.getRequestor().getResident().getName(),complaint.getPriority(), complaint.getRemarks(), complaint.getStatus(), receiver, complaint.getRequestDate(),date};
+            dtm.addRow(objs);
+            
+        }
+    }
+        
+        private void displayEmployes() {
+                
+            
+                for(UserAccount userAccount : organization.getUserAccountDirectory().getAccountList()){
+                    if (userAccount.getRole() instanceof TrashRemovalManagementWorkerRole) comboGrievanceEmploye.addItem(userAccount);
+                    else if (userAccount.getRole() instanceof  LandScapeManagementAgentRole) comboGrievanceEmploye.addItem(userAccount);
+                    else if (userAccount.getRole() instanceof GasManagementWorkerRole) comboGrievanceEmploye.addItem(userAccount);
+                    else if (userAccount.getRole() instanceof  Electricitymanagementworkerrole) comboGrievanceEmploye.addItem(userAccount);
+                    else if (userAccount.getRole() instanceof  DrinkingWaterManagementAgentRole) comboGrievanceEmploye.addItem(userAccount);
+                    else if (userAccount.getRole() instanceof  DrinkingWaterManagementAgentRole) comboGrievanceEmploye.addItem(userAccount);
+            }
+        
+        
+        }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel btnaccept;
-    private javax.swing.JLabel btnassign;
-    private javax.swing.JLabel btnback;
-    private javax.swing.JLabel btndecline;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton btnAcceptRequest;
+    private javax.swing.JButton btnAssign;
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnDeclineRequest;
+    private javax.swing.JComboBox comboGrievanceEmploye;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblGrievenceManager;
+    private javax.swing.JLabel lblManager;
+    private javax.swing.JTable tblOrganizationManager;
     // End of variables declaration//GEN-END:variables
 }
+

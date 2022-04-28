@@ -19,6 +19,25 @@ public class WorkAppeal {
     private String status;
     private Date requestDate;
     private Date resolveDate;  
+    private String OrganizationType;
+
+    public String getOrganizationType() {
+        return OrganizationType;
+    }
+
+    public void setOrganizationType(String OrganizationType) {
+        this.OrganizationType = OrganizationType;
+    }
+
+    public String getRequestType() {
+        return requestType;
+    }
+
+    public void setRequestType(String requestType) {
+        this.requestType = requestType;
+    }
+    private String requestType;
+    
     public WorkAppeal(){
        requestDate = new Date();  
     }

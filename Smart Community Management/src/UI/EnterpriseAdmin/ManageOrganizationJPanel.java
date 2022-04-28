@@ -1,14 +1,14 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package UI.EnterpriseAdmin;
-
-import Business.Enterprise.Enterprise;
 import Business.Enterprise.CommunityComplaintManagementEnterprise;
 import Business.Enterprise.CommunityHeathcareEnterprise;
-import Business.Enterprise.CommunitySafetyEnterprise;
+import Business.Enterprise.Enterprise;
 import Business.Enterprise.ResidentEnterprise;
+import Business.Enterprise.CommunitySafetyEnterprise;
 import Business.Organization.Organization;
 import Business.Organization.Organization.Type;
 import Business.Organization.OrganizationDirectory;
@@ -16,22 +16,24 @@ import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
-
 /**
  *
- * @author adepu
+ * @author suprajakosuri
  */
 public class ManageOrganizationJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form ManageOrganization
+     * Creates new form ManageOrganizationJPanel
+     * 
+     * 
      */
     
     private JPanel userProcessContainer;
     private Enterprise enterprise;
     private OrganizationDirectory organizationDirectory;
     DefaultTableModel model;
-    public ManageOrganizationJPanel() {
+    
+    public ManageOrganizationJPanel(JPanel userProcessContainer,Enterprise enterprise, OrganizationDirectory organizationDirectory) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise=enterprise;
@@ -50,20 +52,22 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        boxOrganization = new javax.swing.JComboBox();
+        btnAddOrganization = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblOrganization = new javax.swing.JTable();
-        btnAddOrganization = new javax.swing.JButton();
+        boxOrganization = new javax.swing.JComboBox();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
+        btnAdd = new javax.swing.JButton();
 
-        jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 51, 102));
-        jLabel2.setText("Manage Organization");
-
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jLabel1.setText("Select an Organization");
+        btnAddOrganization.setBackground(new java.awt.Color(204, 255, 255));
+        btnAddOrganization.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnAddOrganization.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddOrganizationActionPerformed(evt);
+            }
+        });
 
         tblOrganization.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -75,19 +79,24 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblOrganization);
 
-        btnAddOrganization.setBackground(new java.awt.Color(204, 255, 255));
-        btnAddOrganization.setText("Add");
-        btnAddOrganization.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnAddOrganization.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddOrganizationActionPerformed(evt);
-            }
-        });
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        jLabel1.setText("Select an Organization");
 
-        btnBack.setText("back");
+        jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 51, 102));
+        jLabel2.setText("Manage Organization");
+
+        btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
+            }
+        });
+
+        btnAdd.setText("ADD");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
             }
         });
 
@@ -103,45 +112,46 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
                         .addGap(89, 89, 89)
                         .addComponent(boxOrganization, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(518, 518, 518)
+                        .addComponent(btnBack))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(410, 410, 410)
-                        .addComponent(btnAddOrganization, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnAddOrganization, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAdd))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(221, 221, 221)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(173, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(113, 113, 113))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(8, 8, 8)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnBack)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(boxOrganization, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addGap(39, 39, 39)
-                .addComponent(btnAddOrganization, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAddOrganization)
+                    .addComponent(btnAdd))
+                .addGap(23, 23, 23)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(169, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddOrganizationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddOrganizationActionPerformed
 
-        Type type = (Type) boxOrganization.getSelectedItem();
-        organizationDirectory.createOrganization(type);
-        populateTable();
+//        Type type = (Type) boxOrganization.getSelectedItem();
+//        organizationDirectory.createOrganization(type);
+//        populateTable();
     }//GEN-LAST:event_btnAddOrganizationActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -150,6 +160,13 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        // TODO add your handling code here:
+         Type type = (Type) boxOrganization.getSelectedItem();
+        organizationDirectory.createOrganization(type);
+        populateTable();
+    }//GEN-LAST:event_btnAddActionPerformed
  private void populateComboBox()
     {
         boxOrganization.removeAllItems();
@@ -165,7 +182,6 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
                      boxOrganization.addItem(Organization.Type.GasManagement);
                      boxOrganization.addItem(Organization.Type.ElectricityManagement);
                      boxOrganization.addItem(Organization.Type.DrinkingWaterManagement);
-                    
                      break;
                 }
                 else if(enterprise instanceof CommunityHeathcareEnterprise)
@@ -179,7 +195,7 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
                 else if(enterprise instanceof CommunitySafetyEnterprise)
                 {
                      boxOrganization.addItem(Organization.Type.CommunitySecurityManagement);
-                    
+                   
                      break;
                 }
                   
@@ -200,6 +216,7 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox boxOrganization;
+    private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnAddOrganization;
     private javax.swing.JButton btnBack;
     private javax.swing.JLabel jLabel1;

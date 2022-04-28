@@ -4,10 +4,13 @@
  */
 package Business.Role;
 
+import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
+import UI.UtilityComplaint.worker.UtilityComplaintWorkerPanel;
+import javax.swing.JPanel;
 
 /**
  *
@@ -16,6 +19,6 @@ import Business.UserAccount.UserAccount;
 public class TrashRemovalManagementWorkerRole extends Role {
      @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business,Network network) {
-        return new UtilityComplaintWorkerPanel(userProcessContainer, account, organization);
+        return new UtilityComplaintWorkerPanel(userProcessContainer, account,organization);
     } 
 }
