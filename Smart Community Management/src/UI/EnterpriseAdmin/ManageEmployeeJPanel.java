@@ -3,7 +3,44 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package UI.EnterpriseAdmin;
+import Business.Enterprise.Enterprise;
+import Business.Organization.OrganizationDirectory;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import Business.Employee.Employee;
+import Business.Enterprise.CommunityComplaintManagementEnterprise;
+import Business.Enterprise.CommunityHeathcareEnterprise;
+import Business.Enterprise.Enterprise;
+import Business.Enterprise.CommunitySafetyEnterprise;
+import Business.Organization.Organization;
+import Business.Organization.OrganizationDirectory;
+import Business.Role.DoctorRole;
+import Business.Role.CommunitySecurityManagementSupervisorRole;
+import Business.Role.CommunitySecurityManagementWorkerRole;
+import Business.Role.DrinkingWaterManagementAgentRole;
+import Business.Role.ElectricityManagementSupervisorRole;
+import Business.Role.Electricitymanagementworkerrole;
+import Business.Role.GasManagementSupervisoreRole;
+import Business.Role.GasManagementWorkerRole;
+import Business.Role.LabAssistantRole;
+import Business.Role.LandScapeManagementAgentRole;
+import Business.Role.Role;
+import Business.Role.SystemAdminRole;
+import Business.Role.TrashRemovalManagementSupervisorrole;
+import Business.Role.TrashRemovalManagementWorkerRole;
 
+import Business.UserAccount.UserAccount;
+import Business.UserAccount.UserAccountDirectory;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.lang.model.SourceVersion;
+import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
 /**
  *
  * @author adepu
@@ -13,8 +50,19 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ManageEmployee
      */
-    public ManageEmployeeJPanel() {
+    private Enterprise enterprise;
+    private JPanel userProcessContainer;
+    private OrganizationDirectory organizationDirectory;
+    DefaultTableModel model;
+    public ManageEmployeeJPanel(JPanel userProcessContainer, Enterprise enterprise) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        //this.organizationDirectory = organizationDirectory;
+        this.enterprise = enterprise;
+        model = (DefaultTableModel) tableEmployee.getModel();
+        populateOrganizationEmployeeComboBox();
+        populateEmployeeRoleComboBox();
+        populateTable();
     }
 
     /**
@@ -26,32 +74,75 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnAddEmployee = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        btnBack = new javax.swing.JButton();
         orgEmpRoleComboBox = new javax.swing.JComboBox();
+        jLabel5 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        txtEmpName = new javax.swing.JTextField();
         orgTypeComboBox = new javax.swing.JComboBox();
+        jLabel6 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        lblValidUser = new javax.swing.JLabel();
         txtUser = new javax.swing.JTextField();
+        lblValidPassword = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableEmployee = new javax.swing.JTable();
-        btnAddEmployee = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        txtEmpName = new javax.swing.JTextField();
 
-        jLabel1.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        jLabel1.setText("MANAGE Employee");
+        btnAddEmployee.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
+        btnAddEmployee.setText("Save");
+        btnAddEmployee.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnAddEmployee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddEmployeeActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        jLabel1.setText("Employee Type");
+
+        btnBack.setText("back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        jLabel5.setText("Employee Name");
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel2.setText("Organization");
 
+        jLabel6.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 51, 102));
+        jLabel6.setText("Manage Employee");
+
         jLabel3.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel3.setText("Username");
 
+        txtUser.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtUserKeyPressed(evt);
+            }
+        });
+
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel4.setText("Password");
+
+        txtPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPasswordActionPerformed(evt);
+            }
+        });
+        txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPasswordKeyPressed(evt);
+            }
+        });
 
         tableEmployee.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -63,95 +154,367 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tableEmployee);
 
-        btnAddEmployee.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-        btnAddEmployee.setText("Save");
-        btnAddEmployee.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnAddEmployee.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddEmployeeActionPerformed(evt);
-            }
-        });
-
-        jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jLabel5.setText("Employee Type");
-
-        jLabel6.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jLabel6.setText("Employee Name");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(278, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(252, 252, 252))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(144, 144, 144)
+                        .addGap(310, 310, 310)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2)
+                            .addComponent(jLabel1)
                             .addComponent(jLabel5)
-                            .addComponent(jLabel6)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4))
                         .addGap(101, 101, 101)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(orgEmpRoleComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(orgEmpRoleComboBox, 0, 220, Short.MAX_VALUE)
                             .addComponent(orgTypeComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtEmpName)
                             .addComponent(txtUser)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 664, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPassword))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblValidUser, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblValidPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(259, 259, 259)
+                        .addGap(44, 44, 44)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(561, 561, 561)
+                        .addComponent(btnBack))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(166, 166, 166)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 664, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(425, 425, 425)
                         .addComponent(btnAddEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(orgTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
+                    .addComponent(jLabel1)
                     .addComponent(orgEmpRoleComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
+                    .addComponent(jLabel5)
                     .addComponent(txtEmpName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblValidUser, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblValidPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
                 .addComponent(btnAddEmployee)
                 .addGap(40, 40, 40)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(17, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddEmployeeActionPerformed
 
-        
+        Organization organization = (Organization) orgTypeComboBox.getSelectedItem();
+
+        UserAccountDirectory useraccountdirectory = organization.getUserAccountDirectory();
+        String name = txtEmpName.getText();
+
+        String username = txtUser.getText();
+        String password = String.valueOf(txtPassword.getPassword());
+
+        String empRole = orgEmpRoleComboBox.getSelectedItem().toString();
+
+        int n = 0;
+        Role role = null;
+
+        switch (empRole) {
+
+            case "TrashRemovalWorker":
+               
+               n = 2;
+               role = new TrashRemovalManagementWorkerRole();
+               break;
+           
+           case "TrashRemovalSupervisor":
+               
+               n = 3;
+               role = new TrashRemovalManagementSupervisorrole();
+               break;
+               
+           case "ElectricityWorker":
+               
+               n = 4;
+               role = new Electricitymanagementworkerrole();
+               break;
+               
+           case "ElectricitySupervisor":
+               
+               n = 5;
+               role = new ElectricityManagementSupervisorRole();
+               break;
+               
+           case "GasSupervisor":
+               
+               n = 6;
+               role = new  GasManagementSupervisoreRole();
+               break;
+           
+           case "GasWorker":
+               
+               n = 7;
+               role = new GasManagementWorkerRole ();
+               break;
+               
+           case "LandscapeAgent":
+               
+               n = 8;
+               role = new LandScapeManagementAgentRole();
+               break;
+               
+           case "DrinkingWaterAgent":
+               
+               n = 9;
+               role = new DrinkingWaterManagementAgentRole();
+               break;
+               
+           case "CommunitySecurityWorker":
+               
+               n = 10;
+               role = new CommunitySecurityManagementWorkerRole();
+               break;
+               
+           case "CommunitySecuritySupervisor":
+               
+               n = 11;
+               role = new CommunitySecurityManagementSupervisorRole();
+               break;
+               
+           case "Doctor":
+               
+               n = 12;
+               role = new DoctorRole();
+               break;
+               
+           case "LabAssistant":
+               
+               n = 13;
+               role = new LabAssistantRole();
+               break;
+        }
+
+        for(Employee employee : organization.getEmployeeDirectory().getEmployeeList()){
+            if(employee.getName().equals(name)){
+                JOptionPane.showMessageDialog(null, "please input another name");
+                return;
+            }
+        }
+
+        ArrayList<String>usernamecheck = new ArrayList<>();
+        for(UserAccount user: organization.getUserAccountDirectory().getAccountList())
+        {
+            usernamecheck.add(user.getUsername());
+
+        }
+        if(usernamecheck.contains(username))
+        {
+            JOptionPane.showMessageDialog(null,"UserName already exists");
+            return;
+        }
+        if(username.isEmpty()||password.isEmpty())
+        {
+            JOptionPane.showMessageDialog(null,"Please enter a Valid input");
+            return;
+        }
+
+        if(!validUsername(username)){
+            JOptionPane.showMessageDialog(null,"Please enter a Valid username");
+            return;
+        }
+
+        if(!validPassword(password)){
+            JOptionPane.showMessageDialog(null,"Please enter a Valid password with more than 8 characters, 1 number, 1 capital letter and 1 special character");
+            return;
+        }
+
+        // System.out.println(role);
+        Employee employee = organization.getEmployeeDirectory().createEmployee(name,n);
+
+        //System.out.println(employee.getRole());
+        UserAccount userAccount = organization.getUserAccountDirectory().createUserAccount(username, password, employee, role);
+
+        //        for (Organization organization1 : this.enterprise.getOrganizationDirectory().getOrganizationList()) {
+            //            for (UserAccount userAccount1 : organization1.getUserAccountDirectory().getUserAccountList()) {
+                //                System.out.println(this.enterprise.getName() + organization.getName() + userAccount1.getUsername());
+                //            }
+            //        }
+        populateTable();
+        orgEmpRoleComboBox.setSelectedIndex(0);
+        orgTypeComboBox.setSelectedIndex(0);
+        txtEmpName.setText("");
+        txtUser.setText("");
+        txtPassword.setText("");
 
     }//GEN-LAST:event_btnAddEmployeeActionPerformed
 
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_txtPasswordActionPerformed
+
+    private void txtPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyPressed
+        // TODO add your handling code here:
+        if (!validPassword(txtPassword.getText())) {
+            txtPassword.setBorder(BorderFactory.createLineBorder(Color.RED));
+            txtPassword.setForeground(Color.RED);
+            lblValidPassword.setText("8 characters, atleast 1 capital letter, one number, one special character");
+            
+        } else {
+            txtPassword.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txtPassword.setForeground(Color.BLACK);
+            lblValidPassword.setText("Valid Password");
+            int delay = 3000; //milliseconds
+            ActionListener taskPerformer = new ActionListener() {
+                public void actionPerformed(ActionEvent evt) {
+                    lblValidPassword.setVisible(false);
+                    
+                }  
+            };
+            javax.swing.Timer tick = new javax.swing.Timer(delay, taskPerformer);
+            tick.setRepeats(false);
+            tick.start();
+        }
+    }//GEN-LAST:event_txtPasswordKeyPressed
+
+    private void txtUserKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserKeyPressed
+        // TODO add your handling code here:
+        if (!validUsername(txtUser.getText())) {
+            txtUser.setBorder(BorderFactory.createLineBorder(Color.RED));
+            txtUser.setForeground(Color.RED);
+            lblValidUser.setText("Invalid UserName..Only letters allowed");
+        } else {
+            txtUser.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txtUser.setForeground(Color.BLACK);
+            lblValidUser.setText("Valid UserName");
+            int delay = 3000; //milliseconds
+            ActionListener taskPerformer = new ActionListener() {
+                public void actionPerformed(ActionEvent evt) {
+                    lblValidUser.setVisible(false);
+                }  
+            };
+            javax.swing.Timer tick = new javax.swing.Timer(delay, taskPerformer);
+            tick.setRepeats(false);
+            tick.start();
+        }
+        
+    }//GEN-LAST:event_txtUserKeyPressed
+public void populateEmployeeRoleComboBox() {
+        
+        orgEmpRoleComboBox.removeAllItems();
+
+        if (this.enterprise instanceof CommunityComplaintManagementEnterprise ) {
+           
+            orgEmpRoleComboBox.addItem("TrashRemovalSupervisor");
+            orgEmpRoleComboBox.addItem("TrashRemovalWorker");
+            orgEmpRoleComboBox.addItem("ElectricitySupervisor");
+            orgEmpRoleComboBox.addItem("ElectricityWorker");
+            orgEmpRoleComboBox.addItem("GasSupervisor");
+            orgEmpRoleComboBox.addItem("GasWorker");
+            orgEmpRoleComboBox.addItem("LandscapeAgent");
+            orgEmpRoleComboBox.addItem("DrinkingWaterAgent");
+        }
+        if (this.enterprise instanceof CommunityHeathcareEnterprise) {
+            
+            orgEmpRoleComboBox.addItem("Doctor");
+            orgEmpRoleComboBox.addItem("LabAssistant");
+            
+            
+        }
+        if (this.enterprise instanceof CommunitySafetyEnterprise) {
+            orgEmpRoleComboBox.addItem("ommunitySecuritySupervisor");
+            orgEmpRoleComboBox.addItem("CommunitySecurityWorker");
+            
+        }
+
+    }
+
+    public void populateOrganizationEmployeeComboBox() {
+        
+        orgTypeComboBox.removeAllItems();
+
+        for (Organization organization : this.enterprise.getOrganizationDirectory().getOrganizationList()) {
+            orgTypeComboBox.addItem(organization);
+        }
+    }
+    
+    private void populateTable() {
+        
+
+        model.setRowCount(0);
+        for (Organization organization : this.enterprise.getOrganizationDirectory().getOrganizationList()) {
+            System.out.println(organization + "org");
+            for (UserAccount useraccount : organization.getUserAccountDirectory().getAccountList()) {
+//                System.out.println(useraccount + "user");
+//                System.out.println(useraccount.getEmployee().getOrg() + "org");
+//                System.out.println(useraccount.getEmployee().getRole() + "role");
+//                System.out.println(useraccount.getEmployee().getName() + "name");
+//                System.out.println(useraccount.getUsername() + "username");
+//                System.out.println(useraccount.getPassword() + "password");
+//                
+                Object[] objs = {useraccount.getEmployee().getOrg(), useraccount.getEmployee().getRole(),
+                useraccount.getEmployee().getName(),useraccount.getUsername(),useraccount.getPassword()};
+                        
+                model.addRow(objs);
+            }
+        }
+
+    }
+    public static boolean validUsername(String name) {
+        Pattern pattern;
+        Matcher matcher;
+        String NAME_PATTERN = "^[A-Za-z\\s]+$";
+        pattern = Pattern.compile(NAME_PATTERN);
+        matcher = pattern.matcher(name);
+        return matcher.matches();
+    }
+        
+
+    public static boolean validPassword(String passwordValue) {
+        Pattern pattern;
+        Matcher matcher;
+        String PASSWORD_PATTERN
+                = "^(?=.[0-9])(?=.[a-z])(?=.[A-Z])(?=.[!@#$%^&+=~|?])(?=\\S+$).{8,}$";
+        pattern = Pattern.compile(PASSWORD_PATTERN);
+        matcher = pattern.matcher(passwordValue);
+        return matcher.matches();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddEmployee;
+    private javax.swing.JButton btnBack;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -159,6 +522,8 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblValidPassword;
+    private javax.swing.JLabel lblValidUser;
     private javax.swing.JComboBox orgEmpRoleComboBox;
     private javax.swing.JComboBox orgTypeComboBox;
     private javax.swing.JTable tableEmployee;

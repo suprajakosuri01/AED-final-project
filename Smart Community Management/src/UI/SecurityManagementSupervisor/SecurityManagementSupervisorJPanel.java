@@ -4,6 +4,22 @@
  */
 package UI.SecurityManagementSupervisor;
 
+import Business.Employee.Employee;
+import Business.Enterprise.Enterprise;
+import Business.Organization.Organization;
+import Business.Role.DoctorRole;
+import Business.Role.CommunitySecurityManagementSupervisorRole;
+import Business.Role.CommunitySecurityManagementWorkerRole;
+import Business.Role.DoctorRole;
+import Business.UserAccount.UserAccount;
+import Business.WorkQueue.Complaint;
+import Business.WorkQueue.WorkQueue;
+import Business.WorkQueue.WorkAppeal;
+import java.awt.CardLayout;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author adepu
@@ -13,8 +29,22 @@ public class SecurityManagementSupervisorJPanel extends javax.swing.JPanel {
     /**
      * Creates new form SecurityManagementSupervisor
      */
-    public SecurityManagementSupervisorJPanel() {
+    private JPanel userProcessContainer;
+    private UserAccount userAccount;
+    private Organization organization;
+    DefaultTableModel dtm;
+    int row,col;
+    public SecurityManagementSupervisorJPanel(JPanel userProcessContainer, UserAccount userAccount, Organization organization ) {
         initComponents();
+        this.userProcessContainer= userProcessContainer;
+        this.userAccount = userAccount;
+        this.organization = organization;
+        
+        lblOrgName.setText(userAccount.getEmployee().getOrg());
+        lblmanagerName.setText("Welcome Manager " + userAccount.getEmployee().getName()+", please manage residents requests");
+        dtm = (DefaultTableModel) tblEmergencyOrganization.getModel();
+        populateTable();
+        displayEmployes();
     }
 
     /**
@@ -26,88 +56,275 @@ public class SecurityManagementSupervisorJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblOrgName = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        btnaccept = new javax.swing.JButton();
-        btndecline = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        btnassign = new javax.swing.JButton();
+        tblEmergencyOrganization = new javax.swing.JTable();
+        btnAccept = new javax.swing.JButton();
+        btnDecline = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        comboEmergencyEmploye = new javax.swing.JComboBox();
+        btnAssign = new javax.swing.JButton();
+        lblmanagerName = new javax.swing.JLabel();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        lblOrgName.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        lblOrgName.setForeground(new java.awt.Color(255, 51, 102));
+        lblOrgName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        tblEmergencyOrganization.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
-                "Resident Name", "Priority", "Message", "Status", "Request Date", "Resolve Date"
+                "Resident Name", "Priority", "Message", "Status", "Employee", "Request Date", "Resolve Date"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblEmergencyOrganization);
 
-        btnaccept.setText("Accept Request");
+        btnAccept.setBackground(new java.awt.Color(204, 255, 255));
+        btnAccept.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
+        btnAccept.setText("  Accept Request");
+        btnAccept.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnAccept.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAcceptActionPerformed(evt);
+            }
+        });
 
-        btndecline.setText("Decline Request");
+        btnDecline.setBackground(new java.awt.Color(204, 255, 255));
+        btnDecline.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
+        btnDecline.setText("  Decline Request");
+        btnDecline.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnDecline.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeclineActionPerformed(evt);
+            }
+        });
 
-        jLabel1.setText("Assign Worker");
+        jLabel3.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        jLabel3.setText("Assign Employee");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboEmergencyEmploye.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboEmergencyEmployeActionPerformed(evt);
+            }
+        });
 
-        btnassign.setText("Assign");
+        btnAssign.setBackground(new java.awt.Color(204, 255, 255));
+        btnAssign.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
+        btnAssign.setText("Assign");
+        btnAssign.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnAssign.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAssignActionPerformed(evt);
+            }
+        });
+
+        lblmanagerName.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        lblmanagerName.setForeground(new java.awt.Color(255, 51, 102));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblmanagerName, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(61, 61, 61)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 624, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(60, 60, 60)
+                        .addComponent(lblOrgName, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(183, 183, 183)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(108, 108, 108)
-                                .addComponent(btnassign)
-                                .addGap(34, 34, 34))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnaccept)
-                                .addGap(158, 158, 158)
-                                .addComponent(btndecline)))))
-                .addContainerGap(61, Short.MAX_VALUE))
+                        .addGap(54, 54, 54)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 885, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnAccept, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(146, 146, 146)
+                        .addComponent(btnDecline, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(236, 236, 236))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(89, 89, 89)
+                        .addComponent(comboEmergencyEmploye, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(60, 60, 60)
+                        .addComponent(btnAssign, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(185, 185, 185))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(175, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(73, 73, 73)
+                .addComponent(lblOrgName, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblmanagerName, javax.swing.GroupLayout.DEFAULT_SIZE, 4, Short.MAX_VALUE)
+                .addGap(31, 31, 31)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnaccept)
-                    .addComponent(btndecline))
-                .addGap(75, 75, 75)
+                    .addComponent(btnDecline)
+                    .addComponent(btnAccept))
+                .addGap(88, 88, 88)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnassign))
-                .addGap(93, 93, 93))
+                    .addComponent(btnAssign)
+                    .addComponent(comboEmergencyEmploye, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(119, 119, 119))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptActionPerformed
+        // TODO add your handling code here:
+
+        row = tblEmergencyOrganization.getSelectedRow();
+
+        String currentStatus = dtm.getValueAt(row, 3).toString();
+
+        if(currentStatus.equalsIgnoreCase("Complaint raised"))
+        {
+
+            organization.getWorkQueue().getWorkAppeals().get(row).setStatus("Complaint Accepted");
+
+            JOptionPane.showMessageDialog(this, "Complaint is Accepted", " Complaint Accepted", 1);
+
+        }
+
+        else if(currentStatus.equalsIgnoreCase("Complaint Declined")){
+
+            JOptionPane.showMessageDialog(this, "This complaint is Already declined earlier", " Complaint declined", 1);
+
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Complaint is already accepted", " Complaint Accepted", 1);
+
+        }
+        populateTable();
+    }//GEN-LAST:event_btnAcceptActionPerformed
+
+    private void btnDeclineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeclineActionPerformed
+        // TODO add your handling code here:
+
+        row = tblEmergencyOrganization.getSelectedRow();
+        String currentStatus = dtm.getValueAt(row, 3).toString();
+        if(currentStatus.equalsIgnoreCase("Complaint raised"))
+        {
+            userAccount.getWorkQueue().getWorkAppeals().get(row).setStatus("Comlplaint Declined");
+
+        }
+        else if(currentStatus.equalsIgnoreCase("Complaint Declined")){
+
+            JOptionPane.showMessageDialog(this, "This complaint is Already declined earlier", " Complaint declined", 1);
+
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Complaint is already accepted", " Complaint Accepted", 1);
+
+        }
+        populateTable();
+    }//GEN-LAST:event_btnDeclineActionPerformed
+
+    private void comboEmergencyEmployeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboEmergencyEmployeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboEmergencyEmployeActionPerformed
+
+    private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
+        // TODO add your handling code here:
+
+        UserAccount emergencyEmployee = (UserAccount) comboEmergencyEmploye.getSelectedItem();
+
+        if(emergencyEmployee.isEmployeeBusy())
+        {
+        } else {
+            JOptionPane.showMessageDialog(this, "Selected employee is busy please select other employee.", " Complaint not assigned", 1);
+            return;
+        }
+
+        row = tblEmergencyOrganization.getSelectedRow();
+        String currentStatus = dtm.getValueAt(row, 3).toString();
+
+        Complaint complaint = (Complaint) organization.getWorkQueue().getWorkAppeals().get(row);
+
+        if(!currentStatus.equalsIgnoreCase("Complaint Accepted"))
+        {
+
+            JOptionPane.showMessageDialog(this, "Please accept complaint to assign", " Complaint not accepted", 1);
+            return;
+        }
+
+        if(currentStatus.equalsIgnoreCase("Complaint Accepted"))
+        {
+
+            organization.getWorkQueue().getWorkAppeals().get(row).setStatus("Assigned Employee");
+
+            JOptionPane.showMessageDialog(this, "Complaint is Accepted and assigned to respective Employee", " Complaint is forwarded to employee", 1);
+
+        }
+
+        else if(currentStatus.equalsIgnoreCase("Complaint Declined")){
+
+            JOptionPane.showMessageDialog(this, "This complaint is Already declined earlier", " Complaint declined", 1);
+
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Complaint is already Assigend to Employee", " Complaint Accepted", 1);
+
+        }
+
+        userAccount.getWorkQueue().addWorkRequest(complaint);
+
+        complaint.setReceiver(emergencyEmployee);
+        complaint.setStatus("Assigned to Employee");
+        emergencyEmployee.getWorkQueue().addWorkRequest(complaint);
+        populateTable();
+    }//GEN-LAST:event_btnAssignActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnaccept;
-    private javax.swing.JButton btnassign;
-    private javax.swing.JButton btndecline;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnAccept;
+    private javax.swing.JButton btnAssign;
+    private javax.swing.JButton btnDecline;
+    private javax.swing.JComboBox comboEmergencyEmploye;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblOrgName;
+    private javax.swing.JLabel lblmanagerName;
+    private javax.swing.JTable tblEmergencyOrganization;
     // End of variables declaration//GEN-END:variables
+private void populateTable() {
+        dtm.setRowCount(0);
+  
+        WorkQueue workQueue = organization.getWorkQueue();
+        
+        for(WorkAppeal workRequest  : workQueue.getWorkAppeals() ){
+            Complaint complaint = (Complaint) workRequest;
+            
+            String receiver = "Not yet Assigned";
+            if( complaint.getReceiver() != null)
+                receiver = complaint.getReceiver().getEmployee().getName();
+            
+            Date date = null;
+            if(complaint.getStatus().equalsIgnoreCase("Complaint Resolved")) {
+                  date = complaint.getResolveDate();
+            }
+            
+            Object[] objs = {complaint.getRequestor().getResident().getName(),complaint.getPriority(), complaint.getRemarks(), complaint.getStatus(),receiver, complaint.getRequestDate(),date};
+            dtm.addRow(objs);
+            
+        }
+    }
+
+    private void displayEmployes() {
+         
+                for(UserAccount userAccount : organization.getUserAccountDirectory().getAccountList()){
+                    if (userAccount.getRole() instanceof CommunitySecurityManagementWorkerRole) comboEmergencyEmploye.addItem(userAccount);
+                    else if (userAccount.getRole() instanceof DoctorRole) comboEmergencyEmploye.addItem(userAccount);
+            }
+        
+  
+        }
+
+
 }
+

@@ -4,6 +4,17 @@
  */
 package UI.SecurityManagementWorker;
 
+import Business.Network.Network;
+import Business.Organization.Organization;
+import Business.UserAccount.UserAccount;
+import Business.WorkQueue.Complaint;
+import Business.WorkQueue.WorkQueue;
+import Business.WorkQueue.WorkAppeal;
+import java.awt.CardLayout;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author adepu
@@ -13,8 +24,21 @@ public class SecurityManagementWorkerJPanel extends javax.swing.JPanel {
     /**
      * Creates new form SecurityManagementWorker
      */
-    public SecurityManagementWorkerJPanel() {
+    private JPanel userProcessContainer;
+    private UserAccount userAccount;
+    private Network network;
+    private Organization organization;
+    DefaultTableModel dtm;
+    int row,col;
+    public SecurityManagementWorkerJPanel(JPanel userProcessContainer, UserAccount userAccount, Organization organization) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.userAccount = userAccount;
+        this.organization = organization;
+        lblemerEmploye.setText("Welcome employee " + userAccount.getEmployee().getName() + ", please process the request in " + userAccount.getEmployee().getOrg() + " org");
+        
+        dtm = (DefaultTableModel) tblEmergencyEmployee.getModel();populateTable();
+        populateTable();
     }
 
     /**
@@ -26,72 +50,197 @@ public class SecurityManagementWorkerJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         btnback = new javax.swing.JButton();
-        btnaccept = new javax.swing.JButton();
-        btnprocess = new javax.swing.JButton();
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "Resident Name", "Priority", "Message", "Status", "Request Date", "Resolve Date"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        lblemerEmploye = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblEmergencyEmployee = new javax.swing.JTable();
+        btnAccept = new javax.swing.JButton();
+        btnProcess = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         btnback.setText("Back");
 
-        btnaccept.setText("Accept");
+        lblemerEmploye.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        lblemerEmploye.setForeground(new java.awt.Color(255, 51, 102));
+        lblemerEmploye.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-        btnprocess.setText("Process");
+        tblEmergencyEmployee.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Resident Name", "Priority", "Message", "Status", "Employee", "Resolve Date", "Request Date"
+            }
+        ));
+        jScrollPane1.setViewportView(tblEmergencyEmployee);
+
+        btnAccept.setBackground(new java.awt.Color(204, 255, 255));
+        btnAccept.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
+        btnAccept.setText("Accept");
+        btnAccept.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAcceptActionPerformed(evt);
+            }
+        });
+
+        btnProcess.setBackground(new java.awt.Color(204, 255, 255));
+        btnProcess.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
+        btnProcess.setText("Processs");
+        btnProcess.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProcessActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(236, 236, 236)
-                        .addComponent(btnaccept)
-                        .addGap(182, 182, 182)
-                        .addComponent(btnprocess))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(75, 75, 75)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 624, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(86, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 867, Short.MAX_VALUE)
                 .addComponent(btnback)
                 .addGap(52, 52, 52))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(lblemerEmploye, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(153, 153, 153)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(136, 136, 136)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 790, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(256, 256, 256)
+                            .addComponent(btnAccept, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(32, 32, 32)
+                            .addComponent(btnProcess, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addContainerGap(46, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(138, 138, 138)
+                .addGap(51, 51, 51)
+                .addComponent(lblemerEmploye, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(62, 62, 62)
                 .addComponent(btnback)
-                .addGap(49, 49, 49)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnaccept)
-                    .addComponent(btnprocess))
-                .addContainerGap(187, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 294, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(144, 144, 144))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(203, 203, 203)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(56, 56, 56)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnAccept)
+                        .addComponent(btnProcess))
+                    .addContainerGap(146, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptActionPerformed
+        // TODO add your handling code here:
+
+        row = tblEmergencyEmployee.getSelectedRow();
+        if (row < 0){
+            return;
+        }
+
+        Complaint complaint = (Complaint) userAccount.getWorkQueue().getWorkAppeals().get(row);
+        if (dtm.getValueAt(row, 3).toString().equalsIgnoreCase("Employee On the way"))
+        {
+            JOptionPane.showMessageDialog(this,"Complaint already accepted by the employee", "Complaint already accepted", 2);
+        }
+
+        else complaint.setStatus("Employee On the way");
+        populateTable();
+
+    }//GEN-LAST:event_btnAcceptActionPerformed
+
+    private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
+        // TODO add your handling code here:
+
+        row = tblEmergencyEmployee.getSelectedRow();
+
+        if (dtm.getValueAt(row, 3).toString().equalsIgnoreCase("Assigned Employee"))
+        {
+            JOptionPane.showMessageDialog(this,"Please accept the complaint before processing", "Complaint not accepted", 2);
+        }
+
+        else if(dtm.getValueAt(row, 3).toString().equalsIgnoreCase("Employee On the way"))
+        {
+            int dialogButton = JOptionPane.YES_NO_OPTION;
+            int dialogResult = JOptionPane.showConfirmDialog(this, "Complaint Resolved ? ", "Complaint resolved", dialogButton);
+            if (dialogResult == 0)
+            {
+
+                WorkQueue workQueue = userAccount.getWorkQueue();
+                Complaint complaint = (Complaint)workQueue.getWorkAppeals().get(row);
+                complaint.setStatus("Complaint Resolved");
+
+                complaint.setResolveDate(new Date());
+                populateTable();
+                JOptionPane.showMessageDialog(this, "Complaint resolved sucessfuly","Complaint resolved",1);
+            }
+
+        }
+
+        else if (dtm.getValueAt(row, 3).toString().equalsIgnoreCase("Complaint Resolved"))
+        {
+            JOptionPane.showMessageDialog(this,"Complaint is already resolved", "Complaint resolved", 2);
+        }
+
+    }//GEN-LAST:event_btnProcessActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnaccept;
+    private javax.swing.JButton btnAccept;
+    private javax.swing.JButton btnProcess;
     private javax.swing.JButton btnback;
-    private javax.swing.JButton btnprocess;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblemerEmploye;
+    private javax.swing.JTable tblEmergencyEmployee;
     // End of variables declaration//GEN-END:variables
+private void populateTable() {
+      dtm.setRowCount(0);
+  
+        WorkQueue workQueue = organization.getWorkQueue();
+        
+        for(WorkAppeal workRequest  : workQueue.getWorkAppeals() ){
+            Complaint complaint = (Complaint) workRequest;
+            
+            String receiver = "Not yet Assigned"; 
+            if( complaint.getReceiver() != null)
+                receiver = complaint.getReceiver().getEmployee().getName();
+            
+            Date date = null;
+       
+            if(complaint.getStatus().equalsIgnoreCase("Complaint Resolved")) {
+                  date = complaint.getResolveDate();
+            }
+
+            Object[] objs = {complaint.getRequestor().getResident().getName(),complaint.getPriority(), complaint.getRemarks(), complaint.getStatus(),receiver, complaint.getRequestDate(),date};
+            dtm.addRow(objs);
+            
+        }
+    }
 }
