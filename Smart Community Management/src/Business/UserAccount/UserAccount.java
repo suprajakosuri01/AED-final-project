@@ -9,6 +9,7 @@ import Business.Resident.Resident;
 import Business.Role.Role;
 import Business.WorkQueue.WorkQueue;
 import Business.Role.ResidentRole;
+import Business.WorkQueue.WorkAppeal;
 /**
  *
  * @author vivek
@@ -82,6 +83,18 @@ public class UserAccount {
         else if (this.resident != null) return this.resident.getName();
         else return "";
     }
+    public boolean isEmployeeBusy()
+    {
+        for (WorkAppeal workRequest : workQueue.getWorkAppeals())
+        { 
+            if(workRequest.getStatus() != null && workRequest.getStatus().equalsIgnoreCase("Employee On the way"))
+                return true;
+        }
+        return false;
+        //"Employee On the way"
+    }
+
+
     
     
 
