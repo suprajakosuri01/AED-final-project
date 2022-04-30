@@ -17,6 +17,7 @@ import java.util.ArrayList;
  *
  * @author supraja kosuri
  */
+
 public class EcoSystem extends Organization {
     private static EcoSystem business;
     private ArrayList<Network> networkList;
@@ -84,12 +85,12 @@ public class EcoSystem extends Organization {
         
     }
 
-    public boolean isUnique(String name){
+    /*public boolean isUnique(String name){
         for(Network network : networkList){
             if(network.getName().equalsIgnoreCase(name)){
                 return false;
             }
         }
-        return true;
+        return true;*/
     }
 }
