@@ -1,2 +1,0 @@
-UserInterface.ResidentRegistration$1
-UserInterface.ResidentRegistration
