@@ -72,7 +72,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         btnManageEnterprise.setBackground(new java.awt.Color(204, 255, 255));
         btnManageEnterprise.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
-        btnManageEnterprise.setText("Manage Enetrprise");
+        btnManageEnterprise.setText("Manage Enterprise");
         btnManageEnterprise.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnManageEnterprise.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

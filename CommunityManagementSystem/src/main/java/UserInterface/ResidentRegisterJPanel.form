@@ -32,18 +32,18 @@
               </Group>
               <EmptySpace pref="152" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                  <Component id="lblAge" alignment="1" min="-2" pref="112" max="-2" attributes="0"/>
-                  <Component id="lblName" alignment="1" min="-2" pref="112" max="-2" attributes="0"/>
-                  <Component id="lblSex" alignment="1" min="-2" pref="112" max="-2" attributes="0"/>
-                  <Component id="lblIdNumber" alignment="1" min="-2" pref="112" max="-2" attributes="0"/>
-                  <Component id="lblUpload" alignment="1" min="-2" pref="112" max="-2" attributes="0"/>
-                  <Component id="lblUserName" alignment="1" min="-2" pref="112" max="-2" attributes="0"/>
-                  <Component id="lblPassword" alignment="1" min="-2" pref="112" max="-2" attributes="0"/>
-                  <Component id="lblnetwork" alignment="1" min="-2" pref="112" max="-2" attributes="0"/>
-                  <Component id="lblAddress" alignment="1" min="-2" pref="112" max="-2" attributes="0"/>
-                  <Component id="lblEmail" alignment="1" min="-2" pref="112" max="-2" attributes="0"/>
-                  <Component id="lblContactNumber" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblIdType" alignment="1" min="-2" pref="112" max="-2" attributes="0"/>
+                  <Component id="lblAge" linkSize="1" alignment="1" min="-2" pref="112" max="-2" attributes="0"/>
+                  <Component id="lblName" linkSize="1" alignment="1" min="-2" pref="112" max="-2" attributes="0"/>
+                  <Component id="lblSex" linkSize="1" alignment="1" min="-2" pref="112" max="-2" attributes="0"/>
+                  <Component id="lblIdNumber" linkSize="1" alignment="1" min="-2" pref="112" max="-2" attributes="0"/>
+                  <Component id="lblUpload" linkSize="1" alignment="1" min="-2" pref="112" max="-2" attributes="0"/>
+                  <Component id="lblUserName" linkSize="1" alignment="1" min="-2" pref="112" max="-2" attributes="0"/>
+                  <Component id="lblPassword" linkSize="1" alignment="1" min="-2" pref="112" max="-2" attributes="0"/>
+                  <Component id="lblnetwork" linkSize="1" alignment="1" min="-2" pref="112" max="-2" attributes="0"/>
+                  <Component id="lblAddress" linkSize="1" alignment="1" min="-2" pref="112" max="-2" attributes="0"/>
+                  <Component id="lblEmail" linkSize="1" alignment="1" min="-2" pref="112" max="-2" attributes="0"/>
+                  <Component id="lblContactNumber" linkSize="1" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblIdType" linkSize="1" alignment="1" min="-2" pref="112" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -54,11 +54,6 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="rbtnMale" min="-2" pref="68" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="rbtnFemale" min="-2" pref="80" max="-2" attributes="0"/>
-                          </Group>
                           <Component id="txtAddress" alignment="0" min="-2" pref="177" max="-2" attributes="0"/>
                           <Component id="cbIdType" min="-2" pref="167" max="-2" attributes="0"/>
                           <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
@@ -72,7 +67,14 @@
                           </Group>
                           <Component id="txtEmail" min="-2" pref="177" max="-2" attributes="0"/>
                           <Component id="txtName" alignment="1" min="-2" pref="176" max="-2" attributes="0"/>
-                          <Component id="txtAge" alignment="1" min="-2" pref="175" max="-2" attributes="0"/>
+                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="rbtnMale" min="-2" pref="68" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="rbtnFemale" min="-2" pref="80" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="txtAge" min="-2" pref="175" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -88,8 +90,8 @@
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              <Component id="btnRegister" min="-2" pref="307" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="536" max="-2" attributes="0"/>
+              <Component id="btnRegister" min="-2" pref="310" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="527" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -108,7 +110,7 @@
                   <Component id="lblValidName" min="-2" pref="22" max="-2" attributes="0"/>
                   <Group type="103" alignment="1" groupAlignment="3" attributes="0">
                       <Component id="txtName" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblName" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                      <Component id="lblName" linkSize="2" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
@@ -116,43 +118,43 @@
                   <Component id="lblValidAge" alignment="1" min="-2" pref="26" max="-2" attributes="0"/>
                   <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                       <Component id="txtAge" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblAge" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                      <Component id="lblAge" linkSize="2" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                      <Component id="rbtnMale" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblSex" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="lblSex" linkSize="2" min="-2" pref="22" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="rbtnMale" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="rbtnFemale" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="rbtnFemale" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="txtAddress" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                  <Component id="lblAddress" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                  <Component id="lblAddress" linkSize="2" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                       <Component id="txtEmail" alignment="3" max="32767" attributes="0"/>
-                      <Component id="lblEmail" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                      <Component id="lblEmail" linkSize="2" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                   </Group>
                   <Component id="lblValidMail" min="-2" pref="26" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="txtContactNumber" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
-                  <Component id="lblContactNumber" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                  <Component id="lblContactNumber" linkSize="2" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblIdType" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                  <Component id="lblIdType" linkSize="2" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                   <Component id="cbIdType" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblIdNumber" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
+                  <Component id="lblIdNumber" linkSize="2" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
                   <Component id="txtIdNumber" min="-2" max="-2" attributes="0"/>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -160,7 +162,7 @@
                       <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnUpload" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
-                          <Component id="lblUpload" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                          <Component id="lblUpload" linkSize="2" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -171,20 +173,20 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="txtUserName" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblUserName" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                  <Component id="lblUserName" linkSize="2" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                   <Component id="lblUser" min="-2" pref="26" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="lblValidPassword" max="32767" attributes="0"/>
                   <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                      <Component id="lblPassword" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                      <Component id="lblPassword" linkSize="2" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                       <Component id="txtPassword" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblnetwork" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                  <Component id="lblnetwork" linkSize="2" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                   <Component id="cbNetwork" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
