@@ -241,7 +241,7 @@ public class MainFrame extends javax.swing.JFrame {
                 
                 for(Enterprise enterprise:network.getEnterpriseDirectory().getEnterpriseList())
                 {
-                    //inEnterprise=enterprise;
+                  
                     userAccount = enterprise.getUserAccountDirectory().authenticateUser(userName, password);
                     
                     if(userAccount==null)
@@ -258,7 +258,7 @@ public class MainFrame extends javax.swing.JFrame {
                                break;
                            }
                        }
-                        
+                    
                     }
                     else
                     {
@@ -276,7 +276,7 @@ public class MainFrame extends javax.swing.JFrame {
         }
         
         if(userAccount==null){
-            //System
+          
             JOptionPane.showMessageDialog(null, "Invalid credentials");
             return;
         }
@@ -286,10 +286,7 @@ public class MainFrame extends javax.swing.JFrame {
          
             container.add("workArea",userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, system, inNetwork));
             layout.next(container);
-            //if(!userAccount.getUsername().equals("sysadmin")){
-                //RoleLable.setText(userAccount.getEmployee().getRole());
-                //organizationlable.setText(userAccount.getEmployee().getHardOrg());
-            //}
+            
         }
 
         btnLogin.setEnabled(false);
