@@ -20,8 +20,8 @@ import javax.swing.JPanel;
  */
 public class NonGovernmentOrganizationManagerRole extends Role{
     
-     @Override
+     /*@Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business,Network network) {
         return new NGOManagerWorkAreaJPanel(userProcessContainer, account, organization, enterprise);
-    }
+    }*/
 }
