@@ -660,10 +660,8 @@ public class ResidentRegisterJPanel extends javax.swing.JPanel {
         String to = emailId;
         String from = "communitymanagemnent@gmail.com";
         String pass = "Supraja@01";
-// Assuming you are sending email from localhost
-// String host = "192.168.0.16";
 
-// Get system properties
+
         Properties properties = System.getProperties();
         String host = "smtp.gmail.com";
 
