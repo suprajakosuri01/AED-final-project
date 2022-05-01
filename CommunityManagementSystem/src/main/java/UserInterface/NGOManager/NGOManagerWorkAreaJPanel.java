@@ -61,8 +61,9 @@ public class NGOManagerWorkAreaJPanel extends javax.swing.JPanel {
         btnAccept = new javax.swing.JButton();
         btnSend = new javax.swing.JButton();
         btnDecline = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(204, 255, 255));
+        setBackground(new java.awt.Color(0, 153, 153));
 
         tblNgoManager.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -84,7 +85,6 @@ public class NGOManagerWorkAreaJPanel extends javax.swing.JPanel {
 
         btnAccept.setBackground(new java.awt.Color(204, 255, 255));
         btnAccept.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-        btnAccept.setIcon(new javax.swing.ImageIcon("/Users/mohithparvataneni/Downloads/icons8-done-48.png")); // NOI18N
         btnAccept.setText("  Accept");
         btnAccept.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnAccept.addActionListener(new java.awt.event.ActionListener() {
@@ -95,7 +95,6 @@ public class NGOManagerWorkAreaJPanel extends javax.swing.JPanel {
 
         btnSend.setBackground(new java.awt.Color(204, 255, 255));
         btnSend.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-        btnSend.setIcon(new javax.swing.ImageIcon("/Users/mohithparvataneni/Downloads/icons8-money-transfer-48.png")); // NOI18N
         btnSend.setText("  Send Amount");
         btnSend.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnSend.addActionListener(new java.awt.event.ActionListener() {
@@ -106,7 +105,6 @@ public class NGOManagerWorkAreaJPanel extends javax.swing.JPanel {
 
         btnDecline.setBackground(new java.awt.Color(204, 255, 255));
         btnDecline.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-        btnDecline.setIcon(new javax.swing.ImageIcon("/Users/mohithparvataneni/Downloads/icons8-close-window-48.png")); // NOI18N
         btnDecline.setText("  Decline");
         btnDecline.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnDecline.addActionListener(new java.awt.event.ActionListener() {
@@ -114,6 +112,8 @@ public class NGOManagerWorkAreaJPanel extends javax.swing.JPanel {
                 btnDeclineActionPerformed(evt);
             }
         });
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("/Users/suprajakosuri/Desktop/Supraja AED_Final_Git_/AED-final-project/Images/WhatsApp Image 2022-04-30 at 6.44.51 PM.jpeg")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -123,41 +123,45 @@ public class NGOManagerWorkAreaJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblNgoManagerName, javax.swing.GroupLayout.PREFERRED_SIZE, 559, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(114, 114, 114)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 754, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(203, 203, 203)
+                        .addGap(60, 60, 60)
                         .addComponent(jLabel2)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(32, 32, 32)
-                                .addComponent(txtAmmount, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(47, 47, 47)
-                                .addComponent(btnSend, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(82, 82, 82)
-                                .addComponent(btnAccept, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(69, 69, 69)
-                                .addComponent(btnDecline, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(183, Short.MAX_VALUE))
+                        .addGap(110, 110, 110)
+                        .addComponent(txtAmmount, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(83, 83, 83)
+                        .addComponent(btnSend, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addComponent(btnAccept, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(136, 136, 136)
+                        .addComponent(btnDecline, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 690, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(29, 29, 29)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(lblNgoManagerName, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61)
+                .addGap(62, 62, 62)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addGap(82, 82, 82)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAccept)
                     .addComponent(btnDecline))
-                .addGap(36, 36, 36)
+                .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSend)
+                    .addComponent(jLabel2)
                     .addComponent(txtAmmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addContainerGap(41, Short.MAX_VALUE))
+                    .addComponent(btnSend))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(69, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(62, 62, 62))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -267,6 +271,7 @@ public class NGOManagerWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnAccept;
     private javax.swing.JButton btnDecline;
     private javax.swing.JButton btnSend;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblNgoManagerName;

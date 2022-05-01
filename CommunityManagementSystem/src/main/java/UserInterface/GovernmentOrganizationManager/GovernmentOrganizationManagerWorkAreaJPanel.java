@@ -60,8 +60,9 @@ public class GovernmentOrganizationManagerWorkAreaJPanel extends javax.swing.JPa
         btnDecline = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblGovernmentManager = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(204, 255, 255));
+        setBackground(new java.awt.Color(0, 153, 153));
 
         lblGovManagerName.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblGovManagerName.setForeground(new java.awt.Color(255, 51, 102));
@@ -78,7 +79,6 @@ public class GovernmentOrganizationManagerWorkAreaJPanel extends javax.swing.JPa
 
         btnAccept.setBackground(new java.awt.Color(204, 255, 255));
         btnAccept.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-        btnAccept.setIcon(new javax.swing.ImageIcon("/Users/mohithparvataneni/Downloads/icons8-done-48.png")); // NOI18N
         btnAccept.setText("  Accept ");
         btnAccept.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnAccept.addActionListener(new java.awt.event.ActionListener() {
@@ -89,7 +89,6 @@ public class GovernmentOrganizationManagerWorkAreaJPanel extends javax.swing.JPa
 
         btnSend.setBackground(new java.awt.Color(204, 255, 255));
         btnSend.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-        btnSend.setIcon(new javax.swing.ImageIcon("/Users/mohithparvataneni/Downloads/icons8-money-transfer-48.png")); // NOI18N
         btnSend.setText(" Send Amount");
         btnSend.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnSend.addActionListener(new java.awt.event.ActionListener() {
@@ -99,7 +98,6 @@ public class GovernmentOrganizationManagerWorkAreaJPanel extends javax.swing.JPa
         });
 
         btnDecline.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-        btnDecline.setIcon(new javax.swing.ImageIcon("/Users/mohithparvataneni/Downloads/icons8-close-window-48.png")); // NOI18N
         btnDecline.setText("  Decline");
         btnDecline.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnDecline.addActionListener(new java.awt.event.ActionListener() {
@@ -118,6 +116,8 @@ public class GovernmentOrganizationManagerWorkAreaJPanel extends javax.swing.JPa
         ));
         jScrollPane1.setViewportView(tblGovernmentManager);
 
+        jLabel1.setIcon(new javax.swing.ImageIcon("/Users/suprajakosuri/Desktop/Supraja AED_Final_Git_/AED-final-project/Images/WhatsApp Image 2022-04-30 at 6.13.34 PM.jpeg")); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -125,40 +125,46 @@ public class GovernmentOrganizationManagerWorkAreaJPanel extends javax.swing.JPa
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(269, 269, 269)
+                        .addGap(177, 177, 177)
                         .addComponent(btnAccept, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
+                        .addGap(52, 52, 52)
                         .addComponent(btnDecline, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(127, 127, 127)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 839, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(234, 234, 234)
+                        .addGap(122, 122, 122)
                         .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
+                        .addGap(73, 73, 73)
                         .addComponent(txtAmmount, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
+                        .addGap(81, 81, 81)
                         .addComponent(btnSend, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 692, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lblGovManagerName, javax.swing.GroupLayout.PREFERRED_SIZE, 785, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(58, 58, 58)
                 .addComponent(lblGovManagerName, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAccept)
                     .addComponent(btnDecline))
-                .addGap(36, 36, 36)
+                .addGap(67, 67, 67)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtAmmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSend))
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addGap(114, 114, 114))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(77, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(92, 92, 92))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -272,6 +278,7 @@ public class GovernmentOrganizationManagerWorkAreaJPanel extends javax.swing.JPa
     private javax.swing.JButton btnAccept;
     private javax.swing.JButton btnDecline;
     private javax.swing.JButton btnSend;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblGovManagerName;
