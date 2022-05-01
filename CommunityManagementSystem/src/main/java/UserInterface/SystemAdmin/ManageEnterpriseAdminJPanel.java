@@ -268,7 +268,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void displayNetworkComboBox(){
-        cbNetwork.removeAllItems();
+        /*cbNetwork.removeAllItems();
         
         for (Network network : ecosystem.getNetworkList()){
             cbNetwork.addItem(network);
@@ -279,7 +279,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         cbEnterprise.removeAllItems();
         
         for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()){
-            cbEnterprise.addItem(enterprise);
+            cbEnterprise.addItem(enterprise);*/
         
         }
     }

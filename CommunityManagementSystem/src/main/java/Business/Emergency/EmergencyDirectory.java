@@ -15,11 +15,11 @@ public class EmergencyDirectory {
    private ArrayList<Emergency> emergencyList;
 
     public EmergencyDirectory(ArrayList<Emergency> emergencyList) {
-        //this.emergencyList = emergencyList;
+        this.emergencyList = emergencyList;
     }
 
     public ArrayList<Emergency> getEmergencyList() {
-        //return emergencyList;
+       return emergencyList;
     }
    
     public Emergency createEntry(Emergency emergency) {
