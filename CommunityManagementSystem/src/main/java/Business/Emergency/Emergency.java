@@ -13,10 +13,10 @@ public class Emergency {
     String priority;
     String comments;
 
-    public Emergency(String emergencyType, String priority, String comments) {
+    /*public Emergency(String emergencyType, String priority, String comments) {
         this.emergencyType = emergencyType;
         this.priority = priority;
-        this.comments = comments;
+        this.comments = comments;*/
     }
 
     public String getEmergencyType() {
