@@ -658,8 +658,8 @@ public class ResidentRegisterJPanel extends javax.swing.JPanel {
     public static void sendEmailMessage(String emailId) {
 // Recipient's email ID needs to be mentioned.
         String to = emailId;
-        String from = "eswarsainath3@gmail.com";
-        String pass = "Mohan@12345";
+        String from = "communitymanagemnent@gmail.com";
+        String pass = "Supraja@01";
 // Assuming you are sending email from localhost
 // String host = "192.168.0.16";
 
@@ -671,7 +671,7 @@ public class ResidentRegisterJPanel extends javax.swing.JPanel {
 
         properties.put("mail.smtp.ssl.trust", host);
         properties.put("mail.smtp.user", from);
-// properties.put("mail.smtp.password", pass);
+       // properties.put("mail.smtp.password", pass);
         properties.put("mail.smtp.port", "587");
         properties.put("mail.smtp.auth", "true");
 
@@ -689,7 +689,7 @@ public class ResidentRegisterJPanel extends javax.swing.JPanel {
 
 // Set Subject: header field
             message.setSubject("Resident Registration");
-            message.setText("Thank you for registering with us. Your account will be activated within 24 hours.");
+            message.setText("Thank you for registering with us..");
 // Send message
             Transport transport = session.getTransport("smtp");
             transport.connect(host, from, pass);

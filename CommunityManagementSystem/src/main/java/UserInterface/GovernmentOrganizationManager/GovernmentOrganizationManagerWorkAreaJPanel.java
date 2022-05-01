@@ -141,7 +141,7 @@ public class GovernmentOrganizationManagerWorkAreaJPanel extends javax.swing.JPa
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 692, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lblGovManagerName, javax.swing.GroupLayout.PREFERRED_SIZE, 785, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1267, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -162,7 +162,7 @@ public class GovernmentOrganizationManagerWorkAreaJPanel extends javax.swing.JPa
                     .addComponent(btnSend))
                 .addGap(114, 114, 114))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(77, Short.MAX_VALUE)
+                .addContainerGap(209, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(92, 92, 92))
         );
@@ -227,15 +227,14 @@ public class GovernmentOrganizationManagerWorkAreaJPanel extends javax.swing.JPa
             JOptionPane.showMessageDialog(this, "Money sent successfully", "Money Sent", 1);
         }
         
-        else if (currentStatus.equalsIgnoreCase("Money sent sucessfully"))
-        {
-            JOptionPane.showMessageDialog(this, "Money already sent", " Already sent", 1);
-        }
-
         else if(currentStatus.equalsIgnoreCase("Amount request Declined")){
 
             JOptionPane.showMessageDialog(this, "This request is Already declined earlier", " Complaint declined", 1);
 
+        }
+        else 
+        {
+            JOptionPane.showMessageDialog(this, "Money already sent", " Already sent", 1);
         }
         
         PopulateTable();
