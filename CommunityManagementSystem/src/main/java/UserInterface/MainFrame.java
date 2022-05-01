@@ -37,7 +37,7 @@ public class MainFrame extends javax.swing.JFrame {
         this.setSize(1680, 1050);
         displayTime();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
-        //this.setUndecorated(true);
+       
         this.setVisible(true);
         
     }
@@ -208,7 +208,7 @@ public class MainFrame extends javax.swing.JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                lblTime.setText(DateFormat.getDateTimeInstance().format(new Date())); //To change body of generated methods, choose Tools | Templates.
+                lblTime.setText(DateFormat.getDateTimeInstance().format(new Date()));
             }
         });
         timer.setRepeats(true);
@@ -323,7 +323,7 @@ public class MainFrame extends javax.swing.JFrame {
         ResidentRegisterJPanel residentRegisterJPanel = new ResidentRegisterJPanel(userProcessContainer, system);
         System.out.println(residentRegisterJPanel);
         container.add("ResidentRegisterJPanel",residentRegisterJPanel);
-        //jSplitPane1.setRightComponent(userProcessContainer);
+       
         CardLayout layout=(CardLayout)container.getLayout();
         layout.next(container);
     }//GEN-LAST:event_btnSignInActionPerformed
