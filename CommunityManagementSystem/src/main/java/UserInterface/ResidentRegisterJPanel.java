@@ -669,7 +669,7 @@ public class ResidentRegisterJPanel extends javax.swing.JPanel {
 
         properties.put("mail.smtp.ssl.trust", host);
         properties.put("mail.smtp.user", from);
-       // properties.put("mail.smtp.password", pass);
+
         properties.put("mail.smtp.port", "587");
         properties.put("mail.smtp.auth", "true");
 
