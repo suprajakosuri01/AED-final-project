@@ -218,7 +218,7 @@ public class RequestHelpJPanel extends javax.swing.JPanel {
         
         if (!validAccount(bankAccountNumber))
         {
-            JOptionPane.showMessageDialog(null, "Invalid account number");
+            JOptionPane.showMessageDialog(null, "Invalid account number,AccountNo should be 12 digit");
             return;
         }
         

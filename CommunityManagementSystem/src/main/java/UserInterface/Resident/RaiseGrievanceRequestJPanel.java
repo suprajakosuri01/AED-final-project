@@ -202,6 +202,8 @@ public class RaiseGrievanceRequestJPanel extends javax.swing.JPanel {
        
        Organization organization = (Organization) comboGrievanceType.getSelectedItem();
        
+       System.out.println(organization);
+       System.out.println(complaint.toString());
        
        organization.getWorkQueue().addWorkRequest(complaint);
     

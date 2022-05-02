@@ -19,10 +19,8 @@ Business/Role/Role$RoleType.class
 UserInterface/SystemAdmin/ManageNetworkJPanel.class
 UserInterface/ResidentRegisterJPanel$5.class
 UserInterface/ResidentRegisterJPanel$4.class
-Business/Role/.PoliceManRole 9.class.icloud
 UserInterface/ResidentRegisterJPanel$9.class
 Business/Employee/GarbageRemovalMan.class
-UserInterface/EnterpriseAdmin/.ManageEmployeeJPanel$2 12.class.icloud
 Business/Role/FireControlManagerRole.class
 UserInterface/ResidentRegisterJPanel$10.class
 Business/WorkQueue/UserRegistrationRequest.class
@@ -36,7 +34,6 @@ UserInterface/MainFrame$3.class
 UserInterface/Resident/ResidentCheckStatusJPanel$1.class
 UserInterface/ResidentRegisterJPanel$11.class
 UserInterface/Resident/RaiseGrievanceRequestJPanel$1.class
-UserInterface/Resident/.ResidentJPanel 12.class.icloud
 UserInterface/EnterpriseAdmin/ManageEmployeeJPanel$3.class
 Business/Enterprise/ResidentsEnterprise.class
 Business/Grievance/Grievance.class
@@ -53,9 +50,7 @@ UserInterface/EnterpriseAdmin/ManageOrganizationJPanel$1.class
 UserInterface/ResidentRegisterJPanel$12.class
 Business/Role/NonGovernmentOrganizationManagerRole.class
 UserInterface/GovernmentOrganizationManager/GovernmentOrganizationManagerWorkAreaJPanel$2.class
-Business/Employee/.FireControlManager 5.class.icloud
 UserInterface/EmergencyEmploye/EmergencyEmployeeJPanel$2.class
-Business/Role/.WaterSupplierRole 9.class.icloud
 UserInterface/ResidentRegisterJPanel$8.class
 Business/Organization/NonGovernmentOrganization.class
 UserInterface/ResidentRegisterJPanel.class
@@ -85,7 +80,6 @@ UserInterface/SystemAdmin/ManageNetworkJPanel$3.class
 UserInterface/SystemAdmin/ManageEnterpriseAdminJPanel$5.class
 Business/Role/GarbageRemovalManagerRole.class
 UserInterface/EnterpriseAdmin/ManageEmployeeJPanel.class
-Business/Organization/.PoliceOrganization 20.class.icloud
 UserInterface/SystemAdmin/SystemAdminWorkAreaJPanel.class
 UserInterface/GrievanceEmploye/GrievanceEmployeeJPanel.class
 Business/Employee/NGOManager.class
@@ -96,7 +90,6 @@ UserInterface/EmergencyManager/EmergencyManagerJpanel$5.class
 Business/Enterprise/EnterpriseDirectory.class
 UserInterface/ResidentRegisterJPanel$2.class
 UserInterface/SystemAdmin/SystemAdminWorkAreaJPanel$2.class
-Business/Role/.FireControlManagerRole 11.class.icloud
 UserInterface/NGOManager/NGOManagerWorkAreaJPanel.class
 UserInterface/GovernmentOrganizationManager/GovernmentOrganizationManagerWorkAreaJPanel$1.class
 UserInterface/EnterpriseAdmin/AdminWorkAreaJPanel.class
@@ -114,7 +107,6 @@ UserInterface/Resident/RequestHelpJPanel$2.class
 UserInterface/MainFrame.class
 UserInterface/EnterpriseAdmin/ManageEmployeeJPanel$1.class
 UserInterface/Resident/RaiseGrievanceRequestJPanel$3.class
-UserInterface/.MainFrame$3 14.class.icloud
 UserInterface/Resident/RaiseGrievanceRequestJPanel$2.class
 Business/Role/StreetLightMaintenanceManagerRole.class
 Business/Organization/HospitalOrganization.class
@@ -139,7 +131,6 @@ UserInterface/GrievanceEmploye/GrievanceEmployeeJPanel$2.class
 Business/Emergency/Emergency.class
 UserInterface/GrievanceEmploye/GrievanceEmployeeJPanel$3.class
 UserInterface/SystemAdmin/ManageNetworkJPanel$2.class
-Business/Enterprise/.GrievanceManagementEnterprise 6.class.icloud
 Business/Employee/WaterSupplier.class
 Business/Role/GovernmentOrganizationManagerRole.class
 UserInterface/MainFrame$5.class
@@ -154,7 +145,6 @@ UserInterface/Resident/RequestHelpJPanel$3.class
 UserInterface/Resident/ResidentJPanel$2.class
 Business/Role/HospitalManagerRole.class
 Business/Role/Role.class
-Business/WorkQueue/.UserRegistrationRequest 9.class.icloud
 Business/Enterprise/Enterprise$EnterpriseType.class
 UserInterface/Resident/RaiseEmergencyRequestJPanel$2.class
 Business/Employee/WaterSupplyManager.class
@@ -167,7 +157,6 @@ Business/Employee/FireControlEmployee.class
 Business/Organization/WaterSupplyOrganization.class
 UserInterface/EnterpriseAdmin/ManageOrganizationJPanel$2.class
 Business/Employee/PoliceDepartmentHead.class
-UserInterface/EnterpriseAdmin/.ManageEmployeeJPanel$3 10.class.icloud
 Business/Employee/HospitalManager.class
 UserInterface/SystemAdmin/ManageEnterpriseAdminJPanel$2.class
 UserInterface/NGOManager/NGOManagerWorkAreaJPanel$3.class

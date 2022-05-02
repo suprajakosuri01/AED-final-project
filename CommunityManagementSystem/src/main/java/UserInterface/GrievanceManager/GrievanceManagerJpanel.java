@@ -349,9 +349,12 @@ public class GrievanceManagerJpanel extends javax.swing.JPanel {
     private void populateTable() {
       dtm.setRowCount(0);
   
+      System.out.println("name of org" +organization.name);
+      
         WorkQueue workQueue = organization.getWorkQueue();
         
         for(WorkRequest workRequest  : workQueue.getListOfWorkQueues() ){
+            System.out.println("in populate - wq - org type" +workRequest.getOrganizationType());
             Complaint complaint = (Complaint) workRequest;
             
             String receiver = "Not yet Assigned"; 
@@ -364,6 +367,7 @@ public class GrievanceManagerJpanel extends javax.swing.JPanel {
                   date = complaint.getResolveDate();
             }
 
+            System.out.println("Assigned employee for work "+receiver);
             Object[] objs = {complaint.getSender().getResident().getName(),complaint.getPriority(), complaint.getMessage(), complaint.getStatus(), receiver, complaint.getRequestDate(),date};
             dtm.addRow(objs);
             
@@ -374,6 +378,10 @@ public class GrievanceManagerJpanel extends javax.swing.JPanel {
                 
             
                 for(UserAccount userAccount : organization.getUserAccountDirectory().getUserAccountList()){
+                    System.out.println("employee"+ userAccount.getEmployee());
+                    System.out.println("role" +userAccount.getRole());
+                    System.out.println("username" +userAccount.getUsername());
+                    System.out.println("employeeQueue" +userAccount.getWorkQueue());
                     if (userAccount.getRole() instanceof GarbageRemovalManRole) comboGrievanceEmploye.addItem(userAccount);
                     else if (userAccount.getRole() instanceof StreetLightingMaintenanceEmpRole) comboGrievanceEmploye.addItem(userAccount);
                     else if (userAccount.getRole() instanceof WaterSupplierRole) comboGrievanceEmploye.addItem(userAccount);

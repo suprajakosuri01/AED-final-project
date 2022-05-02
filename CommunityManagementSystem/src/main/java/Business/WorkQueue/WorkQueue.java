@@ -23,7 +23,7 @@ public class WorkQueue {
     }
     
     public void addWorkRequest(WorkRequest workRequest){
-            
+        System.out.println(workRequest.getOrganizationType());
         ListOfWorkQueues.add(workRequest);
     }
     
